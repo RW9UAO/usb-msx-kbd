@@ -1,0 +1,21 @@
+mouse + keyboard wireless
+len:07 00 msgtype:04 type:02 device:01 endpoint:02 VID:DA 09 PID:4F 05 > 01 00 00 00 00 00 00 mouse left btn push
+len:07 00 msgtype:04 type:02 device:01 endpoint:02 VID:DA 09 PID:4F 05 > 00 00 00 00 00 00 00 mouse left btn release
+
+len:0D 00 msgtype:04 type:06 device:00 endpoint:01 VID:DA 09 PID:4F 05 > 01 00 00 2C 00 00 00 00 00 00 00 00 00 space key
+len:0D 00 msgtype:04 type:06 device:00 endpoint:01 VID:DA 09 PID:4F 05 > 01 00 00 00 00 00 00 00 00 00 00 00 00 
+
+mouse + keyboard wireless
+len:08 00 msgtype:04 type:02 device:01 endpoint:02 VID:6D 04 PID:34 C5 > 02 01 00 00 00 00 00 00 left btn push
+len:08 00 msgtype:04 type:02 device:01 endpoint:02 VID:6D 04 PID:34 C5 > 02 00 00 00 00 00 00 00 left btn release
+
+len:08 00 msgtype:04 type:06 device:00 endpoint:01 VID:6D 04 PID:34 C5 > 00 00 2C 00 00 00 00 00 space key
+len:08 00 msgtype:04 type:06 device:00 endpoint:01 VID:6D 04 PID:34 C5 > 00 00 00 00 00 00 00 00 
+
+logitech K120
+len:08 00 msgtype:04 type:06 device:00 endpoint:01 VID:6D 04 PID:1C C3 > 00 00 2C 00 00 00 00 00 space key
+len:08 00 msgtype:04 type:06 device:00 endpoint:01 VID:6D 04 PID:1C C3 > 00 00 00 00 00 00 00 00 
+
+send cmd
+[00  B1 ] - ERR_SUCCESS
+len:08 00 msgtype:15 type:06 device:25 endpoint:18 >00 00 00 00 00 00 00 00 
