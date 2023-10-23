@@ -307,14 +307,24 @@ unsigned char hostCtrlTransfer(unsigned char __xdata *DataBuf, unsigned short *R
 		}
 		else
 		{
+			// rw9uao fix
+			pBuf += sizeof(USB_SETUP_REQ);
+
 			DEBUG_OUT("Remaining bytes to write %i, ", RemLen);
 			//todo rework this TxBuffer overwritten
 			while (RemLen)
 			{
 				delayUs(200);
 				UH_TX_LEN = RemLen >= endpoint0Size ? endpoint0Size : RemLen;
-				//memcpy(TxBuffer, pBuf, UH_TX_LEN);
+				//memcpy(TxBuffer, pBuf, UH_TX_LEN); // china commented string
+
+				TxBuffer[ 0 ] = *pBuf;				// rw9uao fix
+
 				pBuf += UH_TX_LEN;
+				
+//putchar(0x0d);putchar(0x0A);
+//for( i = 0; i < 8; i++)	hex2bin( TxBuffer[i] );
+//putchar(0x0d);putchar(0x0A);
 				DEBUG_OUT("pBuf[1] %i, ", pBuf[1]);
 				if (pBuf[1] == 0x09){
 					SetPort = SetPort ^ 1 ? 1 : 0;
@@ -322,7 +332,7 @@ unsigned char hostCtrlTransfer(unsigned char __xdata *DataBuf, unsigned short *R
 
 					DEBUG_OUT("SET_PORT  %02X  %02X, ", *pBuf, SetPort);
 				}
-				DEBUG_OUT("Sending %i bytes, \n", (uint16_t)UH_TX_LEN);
+				DEBUG_OUT("Sending %i bytes, \r\n", (uint16_t)UH_TX_LEN);
 				s = hostTransfer(USB_PID_OUT << 4, UH_TX_CTRL, 10000);
 				if (s != ERR_SUCCESS)
 					return (s);
